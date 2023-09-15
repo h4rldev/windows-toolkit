@@ -1,0 +1,21 @@
+[package]
+name = "wslinstaller"
+build = "build.rs"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+serde = { version = "1.0.188", features = ["derive"] }
+serde_json = "1.0.107"
+tokio = "1.32.0"
+command-group = "2.1.0"
+windows = "0.51.1"
+clap = "4.4.3"
+clap-help = "1.0.0"
+tracing = "0.1.37"
+
+
+[build-dependencies]
+winresource = "0.1.17"
