@@ -13,12 +13,14 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     if cfg!(target_os = "windows") {
         let mut res = winresource::WindowsResource::new();
-        res
-            .set_icon("test.ico")
+        res.set_icon("test.ico")
             .set("InternalName", "WSL Installer")
             .set("OriginalFilename", "wslinstaller.exe")
             .set("ProductName", "WSL Installer")
-            .set("Description", "Install WSL distributions and set them up for use with Windows Terminal")
+            .set(
+                "Description",
+                "Install WSL distributions and set them up for use with Windows Terminal",
+            )
             .set_manifest(manifest)
             .compile()?;
     }

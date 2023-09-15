@@ -18,7 +18,7 @@ pub enum WSLDistro {
     Void,
     Arch,
     NixOS,
-    Custom
+    Custom,
 }
 
 impl FromStr for WSLDistro {
