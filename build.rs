@@ -13,7 +13,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     if cfg!(target_os = "windows") {
         let mut res = winresource::WindowsResource::new();
-        res.set_icon("test.ico")
+        res.set_icon("icon.ico")
             .set("InternalName", "WSL Installer")
             .set("OriginalFilename", "wslinstaller.exe")
             .set("ProductName", "WSL Installer")
