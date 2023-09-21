@@ -3,7 +3,7 @@ use clap::{CommandFactory, Parser};
 use clap_help::Printer;
 use std::process::exit;
 
-static INTRODUCTION: &str = "Install and configure wsl with ease! \n\nmade with ❤  by h4rl";
+static INTRODUCTION: &str = "Install and configure wsl with ease! \n\nmade with ♥ by h4rl";
 
 #[derive(Parser, Debug)]
 #[command(
@@ -53,7 +53,9 @@ pub fn cli_init() {
             let distro: WSLDistro = value.parse().expect("Failed to parse WSLDistro");
             println!("{:?}", distro);
         }
-        None => {}
+        None => {
+            println!("gum");
+        }
     }
     match args.setup {
         Some(value) => match value.as_str() {
@@ -65,7 +67,7 @@ pub fn cli_init() {
             }
         },
         None => {
-            println!("setup");
+            print_help();
         }
     }
 }

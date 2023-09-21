@@ -1,3 +1,3 @@
-fn dummy() {
+pub fn dummy() {
     0;
 }
