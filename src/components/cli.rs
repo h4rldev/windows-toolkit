@@ -1,3 +1,4 @@
+use super::interface::init;
 use super::utils::WSLDistro;
 use clap::{CommandFactory, Parser};
 use clap_help::Printer;
@@ -18,9 +19,6 @@ pub struct Args {
     #[arg(long, short = 'h', short_alias = '?', help = "Prints help information")]
     pub help: bool,
 
-    #[clap(help = "Setup the WSL environment")]
-    pub setup: Option<String>,
-
     #[arg(long, short = 'v', help = "Prints version information")]
     pub version: bool,
 
@@ -35,7 +33,7 @@ fn print_help() {
         .print_help();
 }
 
-pub fn cli_init() {
+pub fn cli_init() -> Result<(), Box<dyn std::error::Error>> {
     let args = Args::parse();
     if args.help {
         print_help();
@@ -52,22 +50,11 @@ pub fn cli_init() {
         Some(value) => {
             let distro: WSLDistro = value.parse().expect("Failed to parse WSLDistro");
             println!("{:?}", distro);
+            Ok(())
         }
         None => {
             println!("gum");
-        }
-    }
-    match args.setup {
-        Some(value) => match value.as_str() {
-            "setup" => {
-                println!("setup");
-            }
-            _ => {
-                println!("setup");
-            }
-        },
-        None => {
-            print_help();
+            Ok(())
         }
     }
 }

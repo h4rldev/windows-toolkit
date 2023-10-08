@@ -26,7 +26,7 @@ fn build() {
 
 fn main() {
     let target = build_target::target_triple().unwrap();
-    if target == String::from("x86_64-pc-windows-gnu") {
+    if target.as_str() == "x86_64-pc-windows-gnu" {
         build();
     } else {
         println!("cargo:warning=Not building for Windows, skipping resource compilation");
