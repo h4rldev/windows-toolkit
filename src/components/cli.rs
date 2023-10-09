@@ -1,6 +1,5 @@
-use super::interface::init;
 use super::utils::WSLDistro;
-use clap::{CommandFactory, Parser};
+use clap::{crate_authors, crate_version, CommandFactory, Parser};
 use clap_help::Printer;
 use std::process::exit;
 
@@ -8,7 +7,7 @@ static INTRODUCTION: &str = "Install and configure wsl with ease! \n\nmade with 
 
 #[derive(Parser, Debug)]
 #[command(
-    name = "wslinstaller",
+    name = "Windows Toolkit",
     author,
     version,
     about,
@@ -22,8 +21,8 @@ pub struct Args {
     #[arg(long, short = 'v', help = "Prints version information")]
     pub version: bool,
 
-    #[arg(long, short = 'd', help = "Pick a distro")]
-    pub distro: Option<String>,
+    #[arg(long, short = 'w', help = "Setup wsl")]
+    pub wsl: Option<String>,
 }
 
 fn print_help() {
@@ -41,20 +40,11 @@ pub fn cli_init() -> Result<(), Box<dyn std::error::Error>> {
     }
     if args.version {
         println!(
-            "WSL Installer v{}",
-            option_env!("CARGO_PKG_VERSION").unwrap_or("unknown")
+            "Windows Toolkit v{} by {}",
+            crate_version!(),
+            crate_authors!()
         );
         exit(0);
     }
-    match args.distro {
-        Some(value) => {
-            let distro: WSLDistro = value.parse().expect("Failed to parse WSLDistro");
-            println!("{:?}", distro);
-            Ok(())
-        }
-        None => {
-            println!("gum");
-            Ok(())
-        }
-    }
+    Ok(())
 }

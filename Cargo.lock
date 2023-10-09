@@ -1666,6 +1666,24 @@ dependencies = [
 ]
 
 [[package]]
+name = "windows-toolkit"
+version = "0.1.0"
+dependencies = [
+ "build-target",
+ "clap",
+ "clap-help",
+ "command-group",
+ "reqwest",
+ "serde",
+ "serde_json",
+ "tokio",
+ "toml 0.8.2",
+ "tracing",
+ "windows",
+ "winresource",
+]
+
+[[package]]
 name = "windows_aarch64_gnullvm"
 version = "0.48.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1734,24 +1752,6 @@ checksum = "77e2aaaf8cfa92078c0c0375423d631f82f2f57979c2884fdd5f604a11e45329"
 dependencies = [
  "toml 0.7.8",
  "version_check",
-]
-
-[[package]]
-name = "wslinstaller"
-version = "0.1.0"
-dependencies = [
- "build-target",
- "clap",
- "clap-help",
- "command-group",
- "reqwest",
- "serde",
- "serde_json",
- "tokio",
- "toml 0.8.2",
- "tracing",
- "windows",
- "winresource",
 ]
 
 [[package]]

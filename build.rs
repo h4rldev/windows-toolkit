@@ -12,14 +12,14 @@ fn build() {
         "#;
     let mut res = winresource::WindowsResource::new();
     res.set_icon("icon.ico")
-        .set("InternalName", "WSL Installer")
-        .set("OriginalFilename", "wslinstaller.exe")
-        .set("ProductName", "WSL Installer")
+        .set("InternalName", "Windows Toolkit")
+        .set("OriginalFilename", "wintools.exe")
+        .set("ProductName", "Windows Toolkit")
         .set(
             "Description",
-            "Install WSL distributions and set them up for use with Windows Terminal",
+            "Manage Windows 10/11 with ease! Made with ♥  by h4rl",
         )
-        .set_manifest(manifest)
+        /*.set_manifest(manifest)*/
         .compile()
         .expect("Failed to compile resource file");
 }
