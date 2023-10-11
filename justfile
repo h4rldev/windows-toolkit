@@ -6,7 +6,7 @@ set positional-arguments
 
 @build:
     if [ ! -d "build/" ]; then \
-        @mkdir build; \
+        mkdir build; \
     fi
     cross build --target x86_64-pc-windows-gnu
     cp target/x86_64-pc-windows-gnu/debug/windows-toolkit.exe build/windows-toolkit.exe
@@ -35,15 +35,15 @@ set positional-arguments
 @test:
     cargo test --target x86_64-pc-windows-gnu
 
-@run-release args:
+@run-release args="":
     cross run --release --target x86_64-pc-windows-gnu -- $1
 
-@run args:
+@run args="":
     echo $1
     cross run --target x86_64-pc-windows-gnu -- $1
 
-@run-windows-release args:
+@run-windows-release args="":
     cargo run --release --target x86_64-pc-windows-gnu -- $1
 
-@run-windows args:
+@run-windows args="":
     cargo run --target x86_64-pc-windows-gnu -- $1

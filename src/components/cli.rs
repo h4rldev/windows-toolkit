@@ -1,4 +1,3 @@
-use super::utils::WSLDistro;
 use clap::{crate_authors, crate_version, CommandFactory, Parser};
 use clap_help::Printer;
 use std::process::exit;

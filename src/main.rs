@@ -1,17 +1,21 @@
+//! #Developed by h4rl with ♥
+//! #uses bsd-2-clause license :)
+
 mod components;
-use components::{cli::cli_init, interface::interface_init, utils::is_elevated};
+use check_elevation::is_elevated;
+use components::{cli::cli_init, interface::interface_init};
 use std::env::args;
+use tracing::{debug, error, info, instrument, warn};
+use tracing_subscriber::fmt;
 
-/*
-* Developed by h4rl with ♥
-* uses bsd-2-clause license :)
-*/
-
+#[instrument(name = "main", level = "debug")]
 fn main() {
-    let elevation_status = is_elevated().expect("Failed to check if elevated");
-    println!("Elevation Status: {}", elevation_status);
+    fmt::init();
+    if !is_elevated().expect("Failed to check if elevated") {
+        warn!("The program isn't elevated, some issues may occur!");
+    }
 
-    let args = args().collect::<Vec<String>>();
+    let args = &args().collect::<Vec<String>>();
     println!("{:?}", args);
     if args.len() > 1 {
         cli_init().expect("Failed to initialize CLI");
